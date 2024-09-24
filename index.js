@@ -4,17 +4,15 @@ import 'gun/lib/radix'
 import 'gun/lib/radisk'
 import 'gun/lib/store'
 import 'gun/lib/rindexed'
-import {Level} from 'level'
 import {Client} from 'relaytorelay'
 
 function GunProxy(opts) {
     const debug = opts.debug
     let urlProxy
 
-    const db = new Level('db')
     const channel = new Client(opts.url, opts.hash, opts.rtr || {})
 
-    setInterval(() => {db.clear().then(console.log).catch(console.error)}, 900000)
+    setInterval(() => {channel.db.clear({gt: 'gun-'}).then(console.log).catch(console.error)}, 900000)
 
     const connect = (chan) => {console.log('connected: ' + chan.id)}
     const err = (e) => {console.error(e.id, e)}
@@ -88,9 +86,9 @@ function GunProxy(opts) {
             console.log('Received Message: ', typeof(data), data)
         }
         const test = await msg(data)
-        const testing = await db.get(test)
+        const testing = await channel.db.get('gun-' + test)
         if(!testing){
-            await db.put(test, data)
+            await channel.db.put('gun-' + test, data)
             gunMessage(data)
         }
     }
