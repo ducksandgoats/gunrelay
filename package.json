@@ -12,6 +12,6 @@
   "description": "",
   "dependencies": {
     "gun": "github:amark/gun",
-    "relaytorelay": "^1.0.0"
+    "relaytorelay": "^1.0.6"
   }
 }
