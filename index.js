@@ -14,9 +14,9 @@ function GunProxy(opts) {
 
     setInterval(() => {channel.db.clear({gt: 'gun-'}).then(console.log).catch(console.error)}, 900000)
 
-    const connect = (chan) => {console.log('connected: ' + chan.id)}
-    const err = (e) => {console.error(e.id, e)}
-    const disconnect = (chan) => {console.log('disconnected: ' + chan.id)}
+    const connect = (chan) => {console.log('connected: ' + chan)}
+    const err = (e) => {console.error(e)}
+    const disconnect = (chan) => {console.log('disconnected: ' + chan)}
     channel.on('connect', connect)
     channel.on('error', err)
     channel.on('disconnect', disconnect)
