@@ -1,6 +1,6 @@
 {
   "name": "gunrelay",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -12,7 +12,6 @@
   "description": "",
   "dependencies": {
     "gun": "github:amark/gun",
-    "level": "^8.0.1",
     "relaytorelay": "^1.0.0"
   }
 }

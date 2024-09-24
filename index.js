@@ -86,7 +86,7 @@ function GunProxy(opts) {
             console.log('Received Message: ', typeof(data), data)
         }
         const test = await msg(data)
-        const testing = await channel.db.get('gun-' + test)
+        const testing = await channel.check('gun-' + test)
         if(!testing){
             await channel.db.put('gun-' + test, data)
             gunMessage(data)
