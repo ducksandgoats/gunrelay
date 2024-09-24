@@ -12,7 +12,7 @@ function GunProxy(opts) {
 
     const channel = new Client(opts.url, opts.hash, opts.rtr || {})
 
-    setInterval(() => {channel.db.clear({gt: 'gun-'}).then(console.log).catch(console.error)}, 900000)
+    setInterval(() => {channel.db.clear({gt: 'gun-'}).then(console.log).catch(console.error)}, 300000)
 
     const connect = (chan) => {console.log('connected: ' + chan)}
     const err = (e) => {console.error(e)}
